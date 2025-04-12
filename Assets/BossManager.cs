@@ -21,7 +21,7 @@ public class BossManager : MonoBehaviour
     }
 
     private void spawnCircleAttack(){
-        Instantiate(circleAttack, new Vector3(0,0,-1), new Quaternion(0,0,0,0));
+        Instantiate(circleAttack, new Vector3(Random.Range(-5.43f, 5.43f),Random.Range(-3.5f, 0f),-1), new Quaternion(0,0,0,0));
     }
 
     void Update(){
