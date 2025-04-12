@@ -852,7 +852,7 @@ Transform:
   m_GameObject: {fileID: 259747770}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.82, y: -1.98, z: 0}
+  m_LocalPosition: {x: -7.82, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1024,7 +1024,7 @@ Transform:
   m_GameObject: {fileID: 367184151}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.82, y: -0.13, z: 0}
+  m_LocalPosition: {x: -7.82, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2076,7 +2076,7 @@ Transform:
   m_GameObject: {fileID: 1444096276}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.82, y: -4.04, z: 0}
+  m_LocalPosition: {x: -7.82, y: -4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2094,8 +2094,9 @@ GameObject:
   - component: {fileID: 1558537389}
   - component: {fileID: 1558537388}
   - component: {fileID: 1558537387}
+  - component: {fileID: 1558537390}
   m_Layer: 5
-  m_Name: Save Button
+  m_Name: Spare Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2164,7 +2165,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1558537388}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1558537390}
+        m_TargetAssemblyTypeName: AssistButton, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1558537388
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2203,6 +2216,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1558537384}
   m_CullTransparentMesh: 1
+--- !u!114 &1558537390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1558537384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0320665ee3cec5b47864797366ec3db8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 156666176}
+  defeatCanvas: {fileID: 1819358319}
 --- !u!1 &1564881296
 GameObject:
   m_ObjectHideFlags: 0
@@ -2299,6 +2326,7 @@ GameObject:
   - component: {fileID: 1576150942}
   - component: {fileID: 1576150941}
   - component: {fileID: 1576150940}
+  - component: {fileID: 1576150943}
   m_Layer: 5
   m_Name: Quit Button
   m_TagString: Untagged
@@ -2369,7 +2397,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1576150941}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1576150943}
+        m_TargetAssemblyTypeName: QuitButton, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1576150941
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2408,6 +2448,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1576150938}
   m_CullTransparentMesh: 1
+--- !u!114 &1576150943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1576150938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99365b0f0bc7f3148b265e90be42b3b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 156666176}
 --- !u!1 &1687036173
 GameObject:
   m_ObjectHideFlags: 0

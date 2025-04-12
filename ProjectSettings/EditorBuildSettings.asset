@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Skeleton Boss Scene.unity
     guid: fc8314e31064b1f4aa9a7e0ac519fee6
+  - enabled: 1
+    path: Assets/Scenes/Title Screen.unity
+    guid: a19d83aa4c28a0945bc42ef15de5aa00
   m_configObjects: {}

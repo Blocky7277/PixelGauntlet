@@ -14,7 +14,7 @@ public class AttackButtonScript : MonoBehaviour
     private GameManager gameManager;
 
     public void DoAttack(){
-        bossManager.takeDamage(gameManager.GetPlayerController().str);
+        bossManager.takeDamage(gameManager.GetPlayerController().str+1000);
         attackScreen.gameObject.SetActive(false);
     }
 }
