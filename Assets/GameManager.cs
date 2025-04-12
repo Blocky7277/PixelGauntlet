@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    private float totalTime = 0f;
+    private float totalTime {get; set;} = 0f;
     [SerializeField]
     private Canvas attackScreen;
     // Start is called before the first frame update
@@ -20,5 +22,18 @@ public class GameManager : MonoBehaviour
         if (totalTime >= 10f){
             attackScreen.gameObject.SetActive(true);
         }
+    }
+
+    public void TransitionScene(UnityEngine.SceneManagement.Scene scene) {
+        SceneManager.LoadScene(scene.name);
+    }
+
+    public void TransitionScene(UnityEngine.SceneManagement.Scene scene, float delay) {
+        StartCoroutine(DelayedTransition(scene, delay));
+    }
+
+    IEnumerator DelayedTransition(UnityEngine.SceneManagement.Scene scene, float delay) {
+        yield return new WaitForSeconds(delay);
+        SceneManager.LoadScene(scene.name);
     }
 }

@@ -13,10 +13,13 @@ public class PlayerController : MonoBehaviour
     private float spd = 10;
 
     [SerializeField]
-    private float health = 100f;
+    private int health = 100;
 
     [SerializeField]
     private float movementSpeed = 20;
+
+    [SerializeField]
+    GameManager gameManager;
 
     void Start()
     {
@@ -29,7 +32,7 @@ public class PlayerController : MonoBehaviour
         rb.velocity = direction.normalized * movementSpeed;
     }
 
-    public void DealDamage(float dmg) {
+    public void DealDamage(int dmg) {
         health -= dmg;
         if (health <= 0) {
             Die();
@@ -37,12 +40,8 @@ public class PlayerController : MonoBehaviour
     }
 
     private void Die() {
-        Destroy(gameObject);
-        StartCoroutine(DelayLoad());
+        gameManager.TransitionScene(SceneManager.GetActiveScene(), 1f);
+        gameObject.SetActive(false);
     }
 
-    IEnumerator DelayLoad() {
-        yield return new WaitForSeconds(1f);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
 }

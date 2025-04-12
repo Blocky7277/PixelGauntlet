@@ -15,15 +15,7 @@ public class CircleAttack : MonoBehaviour
     private float disappearspeed = 1f;
 
     [SerializeField]
-    private float dmg = 100f;
-
-    
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private int dmg = 100;
 
     // Update is called once per frame
     void Update()
@@ -39,7 +31,7 @@ public class CircleAttack : MonoBehaviour
         }
     }
 
-    void OnCollisionStay(Collision collision)
+    void OnCollisionStay2D(Collision2D collision)
     {
         Debug.Log("OPACITY " + opacitynum);
         Debug.Log("PLAYER " + collision.gameObject.CompareTag("Player"));
