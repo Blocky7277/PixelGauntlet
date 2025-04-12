@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
         totalTime += Time.deltaTime;
         if (totalTime >= 10f){
             attackScreen.gameObject.SetActive(true);
+            totalTime = 0f;
         }
     }
 
