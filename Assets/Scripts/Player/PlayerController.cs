@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
 
     public int health {get; set;} = 3;
 
+    public Assist[] activeAssists = new Assist[3];
+
     [SerializeField]
     GameManager gameManager;
 
@@ -29,6 +31,13 @@ public class PlayerController : MonoBehaviour
     }
 
     public void DealDamage(int dmg) {
+        for (int i = 0; i < activeAssists.Length; i++)
+        {
+            if(activeAssists[i] != null && activeAssists[i].assistType == AssistTypes.SHIELD) {
+                gameManager.deactivateAssist(activeAssists[i]);
+                return;
+            }
+        }
         health -= dmg;
         if (health <= 0) {
             Die();

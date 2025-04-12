@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -18,9 +19,16 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private PlayerController playerController;
 
-    private AssistTypes[] assists = new AssistTypes[3];
+    [SerializeField]
+    private GameObject shieldPrefab;
+
+    private Assist[] assists = new Assist[3];
     private KeyCode[] assistKeyCodes = {KeyCode.J, KeyCode.K, KeyCode.L};
-    private Assist[] assistObjects = new Assist[3];
+
+    void Start()
+    {
+        assists[0] = new Assist(1f, 1f, false, AssistTypes.SHIELD);       
+    }
 
     [SerializeField]
     private GameObject player;
@@ -36,6 +44,13 @@ public class GameManager : MonoBehaviour
         if (totalTime >= 10f){
             attackScreen.gameObject.SetActive(true);
             totalTime = 0f;
+        }
+
+        for (int i = 0; i < assistKeyCodes.Length; i++)  {
+            if(Input.GetKeyDown(assistKeyCodes[i]) && !assists[i].active) {
+                playerController.activeAssists[i] = assists[i];
+                useAssist(assists[i]);
+            }
         }
     }
 
@@ -66,7 +81,19 @@ public class GameManager : MonoBehaviour
     }
 
     public void AddAssist(Assist assist) {
-        
+        assists.Append(assist);
+    }
+
+    public void useAssist(Assist assist) {
+        if (assist.assistType == AssistTypes.SHIELD) {
+            assist.obj = Instantiate(shieldPrefab, playerController.gameObject.transform);
+        }
+    }
+
+    public void deactivateAssist(Assist assist) {
+        Destroy(assist.obj);
+        assist.obj = null;
+        assist.active = false;
     }
 
 }

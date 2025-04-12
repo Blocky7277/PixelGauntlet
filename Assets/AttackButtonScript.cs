@@ -16,6 +16,5 @@ public class AttackButtonScript : MonoBehaviour
     public void DoAttack(){
         bossManager.takeDamage(gameManager.GetPlayerController().str);
         attackScreen.gameObject.SetActive(false);
-        Debug.Log("hide attack screen");
     }
 }
