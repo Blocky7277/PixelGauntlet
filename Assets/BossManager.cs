@@ -13,11 +13,18 @@ public class BossManager : MonoBehaviour
     [SerializeField]
     private GameObject circleAttack;
 
+    [SerializeField]
+    private GameObject healthbar;
+
     private float totalTime = 0f;
     
     public void takeDamage(int damageToDeal){
         health -= damageToDeal;
         Debug.Log(health);
+        float percentHealthDealt = ((float)damageToDeal)/health;
+        Debug.Log(percentHealthDealt);
+        healthbar.transform.localScale -= new Vector3(percentHealthDealt*healthbar.transform.localScale.x, 0, 0);
+        healthbar.transform.position -= new Vector3(percentHealthDealt*healthbar.transform.localScale.x/2, 0, 0);
     }
 
     private void spawnCircleAttack(){
