@@ -147,7 +147,8 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < assistKeyCodes.Length; i++)  {
             if(assists[i] != null) {
                 assistCooldownVisual[i].GetComponent<SpriteRenderer>().color = Color.green;
-                assistCooldownVisual[i].GetComponent<SpriteRenderer>().sprite = assists[i].assistType == AssistTypes.DASH ? assistEmblems[1] : assistEmblems[0];
+                assistCooldownVisual[i].GetComponent<SpriteRenderer>().sprite = assists[i].assistType == AssistTypes.DASH ? 
+                assistEmblems[1] : assistEmblems[0];
             }
         }
     }

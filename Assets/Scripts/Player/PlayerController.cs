@@ -42,6 +42,7 @@ public class PlayerController : MonoBehaviour
         for (int i = 0; i < activeAssists.Length; i++)
         {
             if(activeAssists[i] != null && activeAssists[i].assistType == AssistTypes.SHIELD) {
+                activeAssists[i] = null;
                 gameManager.deactivateAssist(activeAssists[i]);
                 return;
             }
