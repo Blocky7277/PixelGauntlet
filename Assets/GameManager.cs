@@ -27,6 +27,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameObject shieldPrefab;
 
+    [SerializeField]
+    private Sprite[] assistEmblems = new Sprite[2];
+
     private Assist[] assists = new Assist[3];
     private KeyCode[] assistKeyCodes = {KeyCode.J, KeyCode.K, KeyCode.L};
     [SerializeField]
@@ -121,6 +124,7 @@ public class GameManager : MonoBehaviour
             }
         }
         else {
+            if(assists[0].active) deactivateAssist(assists[0]);
             assists[0] = assist;
         }
         UpdateVisuals();
@@ -143,6 +147,7 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < assistKeyCodes.Length; i++)  {
             if(assists[i] != null) {
                 assistCooldownVisual[i].GetComponent<SpriteRenderer>().color = Color.green;
+                assistCooldownVisual[i].GetComponent<SpriteRenderer>().sprite = assists[i].assistType == AssistTypes.DASH ? assistEmblems[1] : assistEmblems[0];
             }
         }
     }

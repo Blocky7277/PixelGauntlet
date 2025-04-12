@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
 
     public int spd {get; set;} = 10;
 
-    public int health {get; set;} = 3;
+    public int health {get; set;} = 10;
 
     public Assist[] activeAssists {get; set;} = new Assist[3];
 
@@ -28,11 +28,11 @@ public class PlayerController : MonoBehaviour
     {
         
         Vector2 direction = new(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-        rb.velocity = direction.normalized * spd;
+        rb.velocity = gameObject.activeSelf ? direction.normalized * spd : Vector2.zero;
         for (int i = 0; i < activeAssists.Length; i++)
         {
             if(activeAssists[i] != null && activeAssists[i].assistType == AssistTypes.DASH) {
-                rb.velocity = direction.normalized * spd * 10;
+                rb.velocity = 10 * spd * direction.normalized;
                 activeAssists[i] = null;
             }
         }

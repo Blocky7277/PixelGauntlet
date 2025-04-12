@@ -99,9 +99,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 2271746858839504671}
-  attackspeed: 2
+  attackspeed: 4
   disappearspeed: 0.3
-  dmg: 100
+  dmg: 1
 --- !u!61 &8944882787318341396
 BoxCollider2D:
   m_ObjectHideFlags: 0

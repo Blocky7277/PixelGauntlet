@@ -54,17 +54,17 @@ public class BossManager : MonoBehaviour
     }
 
     private void spawnCircleAttack(){
-        var circle = Instantiate(circleAttack, new Vector3(Random.Range(-5.43f, 5.43f),Random.Range(-3.5f, 0f),-1), new Quaternion(0,0,0,0));
+        var circle = Instantiate(circleAttack, new Vector3(player.transform.position.x + Random.Range(-2f, 2f), player.transform.position.y + Random.Range(-2f, 2f),-1), new Quaternion(0,0,0,0));
         generatedObjects.Add(circle);
     }
 
     private void spawnBeamAttack(){
         if (Random.Range(0, 2) == 0){
-            var beam = Instantiate(vertBeamAttack, new Vector3(Random.Range(-6f, 6f),-1.75f,-1), new Quaternion(0,0,90,90));
+            var beam = Instantiate(vertBeamAttack, new Vector3(player.transform.position.x + Random.Range(-2f, 2f),-1.75f,-1), new Quaternion(0,0,90,90));
             generatedObjects.Add(beam);
         }
         else{
-            var beam = Instantiate(horizBeamAttack, new Vector3(0,Random.Range(-4f, 0.5f),-1), new Quaternion(0,0,0,0));
+            var beam = Instantiate(horizBeamAttack, new Vector3(0,player.transform.position.y + Random.Range(-1.7f, 1.5f),-1), new Quaternion(0,0,0,0));
             generatedObjects.Add(beam);
         }
     }
