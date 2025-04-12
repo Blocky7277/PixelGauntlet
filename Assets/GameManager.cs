@@ -84,6 +84,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void useAssist(Assist assist) {
+        assist.active = true;
         if (assist.assistType == AssistTypes.SHIELD) {
             assist.obj = Instantiate(shieldPrefab, playerController.gameObject.transform);
         }
