@@ -12,14 +12,7 @@ public class PlayerController : MonoBehaviour
 
     public int spd {get; set;} = 10;
 
-<<<<<<< Updated upstream
-    public bool shield {get; set;} = false;
-
-    [SerializeField]
-    private int health = 100;
-=======
     public int health {get; set;} = 3;
->>>>>>> Stashed changes
 
     [SerializeField]
     GameManager gameManager;
