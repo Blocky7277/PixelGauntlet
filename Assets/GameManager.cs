@@ -22,7 +22,9 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        totalTime += Time.deltaTime;
+        if (!attackScreen.gameObject.activeSelf){
+            totalTime += Time.deltaTime;
+        }
         if (totalTime >= 10f){
             attackScreen.gameObject.SetActive(true);
             totalTime = 0f;

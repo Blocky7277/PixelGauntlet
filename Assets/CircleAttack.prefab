@@ -134,6 +134,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 7021896605848451207}
-  attackspeed: 1
-  disappearspeed: 1
+  attackspeed: 2
+  disappearspeed: 0.3
   dmg: 100

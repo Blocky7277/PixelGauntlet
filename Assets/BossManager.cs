@@ -19,12 +19,11 @@ public class BossManager : MonoBehaviour
     private float totalTime = 0f;
     
     public void takeDamage(int damageToDeal){
+        float percentHealthDealt = ((float)damageToDeal)/health;
         health -= damageToDeal;
         Debug.Log(health);
-        float percentHealthDealt = ((float)damageToDeal)/health;
-        Debug.Log(percentHealthDealt);
-        healthbar.transform.localScale -= new Vector3(percentHealthDealt*healthbar.transform.localScale.x, 0, 0);
         healthbar.transform.position -= new Vector3(percentHealthDealt*healthbar.transform.localScale.x/2, 0, 0);
+        healthbar.transform.localScale -= new Vector3(percentHealthDealt*healthbar.transform.localScale.x, 0, 0);
     }
 
     private void spawnCircleAttack(){
@@ -33,7 +32,7 @@ public class BossManager : MonoBehaviour
 
     void Update(){
         totalTime += Time.deltaTime;
-        if (!attackScreen.gameObject.activeSelf && totalTime >= 2f){
+        if (!attackScreen.gameObject.activeSelf && totalTime >= 0.5f){
             spawnCircleAttack();
             totalTime = 0f;
         }
