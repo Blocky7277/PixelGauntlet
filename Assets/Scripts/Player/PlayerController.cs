@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
 
     private float spd = 10;
 
+    [SerializeField]
     private float health = 100f;
 
     [SerializeField]
