@@ -1559,6 +1559,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4bc34373cd6b4242a1647a5707f4ebf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bossManager: {fileID: 1926548357}
+  attackScreen: {fileID: 1841876457}
 --- !u!1 &1841876454
 GameObject:
   m_ObjectHideFlags: 0
@@ -1760,6 +1762,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cfb622cf56cbfd439160a73ab0105fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 100
 --- !u!1 &1987995199
 GameObject:
   m_ObjectHideFlags: 0

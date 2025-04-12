@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class AttackButtonScript : MonoBehaviour
 {
+    [SerializeField]
+    private BossManager bossManager;
+    [SerializeField]
+    private Canvas attackScreen;
     public void doAttack(){
-        Debug.Log("amogus");
+        bossManager.takeDamage(5);
+        attackScreen.gameObject.SetActive(false);
     }
 }

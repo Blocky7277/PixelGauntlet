@@ -5,16 +5,10 @@ using UnityEngine;
 public class BossManager : MonoBehaviour
 {
     [SerializeField]
-    private int health {get; set;}
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+    private int health = 100;
+    
+    public void takeDamage(int damageToDeal){
+        health -= damageToDeal;
+        Debug.Log(health);
     }
 }
