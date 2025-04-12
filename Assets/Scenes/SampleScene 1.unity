@@ -1763,6 +1763,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  attackScreen: {fileID: 1841876457}
+  circleAttack: {fileID: 8493140178115430898, guid: 5c57412e037bb314b8f69fca4a220b73, type: 3}
 --- !u!1 &1987995199
 GameObject:
   m_ObjectHideFlags: 0
