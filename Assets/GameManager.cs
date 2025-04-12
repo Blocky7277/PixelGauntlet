@@ -9,6 +9,10 @@ public class GameManager : MonoBehaviour
     private float totalTime {get; set;} = 0f;
     [SerializeField]
     private Canvas attackScreen;
+
+    [SerializeField]
+    private PlayerController playerController;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,5 +39,9 @@ public class GameManager : MonoBehaviour
     IEnumerator DelayedTransition(UnityEngine.SceneManagement.Scene scene, float delay) {
         yield return new WaitForSeconds(delay);
         SceneManager.LoadScene(scene.name);
+    }
+
+    public PlayerController GetPlayerController() {
+        return playerController;
     }
 }

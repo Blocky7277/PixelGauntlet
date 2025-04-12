@@ -326,6 +326,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackScreen: {fileID: 1841876457}
+  playerController: {fileID: 1442132702}
 --- !u!1 &251827778
 GameObject:
   m_ObjectHideFlags: 0
@@ -933,6 +934,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4422775857663297759, guid: 13a205a735a98d24cbdeadddd243f1c8, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 156666176}
     - target: {fileID: 4558426761686708452, guid: 13a205a735a98d24cbdeadddd243f1c8, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1208,6 +1213,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1442132702 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4422775857663297759, guid: 13a205a735a98d24cbdeadddd243f1c8, type: 3}
+  m_PrefabInstance: {fileID: 1040266578}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70edde62816c1884db93f628b7285494, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1564881296
 GameObject:
   m_ObjectHideFlags: 0
@@ -1498,8 +1514,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1722260220}
-        m_TargetAssemblyTypeName: OnPressScript, Assembly-CSharp
-        m_MethodName: doAttack
+        m_TargetAssemblyTypeName: AttackButtonScript, Assembly-CSharp
+        m_MethodName: DoAttack
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1561,6 +1577,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bossManager: {fileID: 1926548357}
   attackScreen: {fileID: 1841876457}
+  gameManager: {fileID: 156666176}
 --- !u!1 &1841876454
 GameObject:
   m_ObjectHideFlags: 0
@@ -1724,12 +1741,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 8b434ee335ec17f4382e84adcfb315c6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8e5e4b8ad75f56c41b03eea2045e57c7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 5.12, y: 5.12}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

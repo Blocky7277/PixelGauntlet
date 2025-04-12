@@ -105,7 +105,7 @@ CircleCollider2D:
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 0
   m_ForceReceiveLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -136,3 +136,4 @@ MonoBehaviour:
   spriteRenderer: {fileID: 7021896605848451207}
   attackspeed: 1
   disappearspeed: 1
+  dmg: 100

@@ -8,15 +8,12 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D rb;
 
-    private float str = 10;
+    public int str {get; set;} = 10;
 
-    private float spd = 10;
+    public int spd {get; set;} = 10;
 
     [SerializeField]
     private int health = 100;
-
-    [SerializeField]
-    private float movementSpeed = 20;
 
     [SerializeField]
     GameManager gameManager;
@@ -28,8 +25,8 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        Vector2 direction = new(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-        rb.velocity = direction.normalized * movementSpeed;
+        Vector2 direction = new(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        rb.velocity = direction.normalized * spd;
     }
 
     public void DealDamage(int dmg) {

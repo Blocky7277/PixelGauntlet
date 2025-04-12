@@ -6,10 +6,15 @@ public class AttackButtonScript : MonoBehaviour
 {
     [SerializeField]
     private BossManager bossManager;
+
     [SerializeField]
     private Canvas attackScreen;
-    public void doAttack(){
-        bossManager.takeDamage(5);
+
+    [SerializeField]
+    private GameManager gameManager;
+
+    public void DoAttack(){
+        bossManager.takeDamage(gameManager.GetPlayerController().str);
         attackScreen.gameObject.SetActive(false);
     }
 }
