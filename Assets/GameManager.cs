@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!attackScreen.gameObject.activeSelf){
+        if (!attackScreen.gameObject.activeSelf && !defeatScreen.gameObject.activeSelf){
             totalTime += Time.deltaTime;
         }
         if (totalTime >= 10f){
