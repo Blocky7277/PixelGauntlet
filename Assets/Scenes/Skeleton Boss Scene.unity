@@ -480,6 +480,9 @@ MonoBehaviour:
   - {fileID: 367184151}
   - {fileID: 259747770}
   - {fileID: 1444096276}
+  skeleton: {fileID: 21300000, guid: 8e5e4b8ad75f56c41b03eea2045e57c7, type: 3}
+  stereo: {fileID: 21300000, guid: 07facc5b19ac5cb4f821a40e61d10fed, type: 3}
+  bossIcon: {fileID: 1926548354}
   player: {fileID: 1855102262}
   bossManager: {fileID: 1926548357}
 --- !u!1 &251827778
@@ -3059,7 +3062,10 @@ MonoBehaviour:
   attackScreen: {fileID: 1841876457}
   defeatScreen: {fileID: 1819358319}
   circleAttack: {fileID: 8493140178115430898, guid: 5c57412e037bb314b8f69fca4a220b73, type: 3}
+  horizBeamAttack: {fileID: 8201272553971641908, guid: 6e56627dc98ac5e49a248f71fd6fc469, type: 3}
+  vertBeamAttack: {fileID: 3894305222481768452, guid: 0381ce03c645af04bafc0dd86b66825a, type: 3}
   healthbar: {fileID: 375460114}
+  totalTime: -2
 --- !u!1 &1987995199
 GameObject:
   m_ObjectHideFlags: 0
