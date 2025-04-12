@@ -8,7 +8,13 @@ public class BossManager : MonoBehaviour
     private int health = 100;
 
     [SerializeField]
+    private GameObject player;
+
+    [SerializeField]
     private Canvas attackScreen;
+    
+    [SerializeField]
+    private Canvas defeatScreen;
     
     [SerializeField]
     private GameObject circleAttack;
@@ -24,6 +30,10 @@ public class BossManager : MonoBehaviour
         Debug.Log(health);
         healthbar.transform.position -= new Vector3(percentHealthDealt*healthbar.transform.localScale.x/2, 0, 0);
         healthbar.transform.localScale -= new Vector3(percentHealthDealt*healthbar.transform.localScale.x, 0, 0);
+        if (health <= 0){
+            player.SetActive(false);
+            defeatScreen.gameObject.SetActive(true);
+        }
     }
 
     private void spawnCircleAttack(){

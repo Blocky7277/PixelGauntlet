@@ -15,7 +15,7 @@ public class CircleAttack : MonoBehaviour
     private float disappearspeed = 1f;
 
     [SerializeField]
-    private int dmg = 100;
+    private int dmg = 1;
 
     // Update is called once per frame
     void Update()
