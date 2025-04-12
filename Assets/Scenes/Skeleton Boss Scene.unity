@@ -561,6 +561,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackScreen: {fileID: 1841876457}
+  minigameScreen: {fileID: 1226546049}
   defeatScreen: {fileID: 1819358319}
   playerController: {fileID: 88628765}
   shieldPrefab: {fileID: 7889539175872850287, guid: e4b75a5e8faaf0d4c8be9b4808dd7c02, type: 3}
@@ -1729,7 +1730,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!223 &1226546049
 Canvas:
   m_ObjectHideFlags: 0
@@ -3263,7 +3264,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossManager: {fileID: 1926548357}
-  minigameScreen: {fileID: 0}
+  minigameScreen: {fileID: 1226546049}
   gameManager: {fileID: 156666176}
 --- !u!1 &1819358316
 GameObject:
@@ -3388,7 +3389,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1841876455
 MonoBehaviour:
   m_ObjectHideFlags: 0

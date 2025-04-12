@@ -16,6 +16,9 @@ public class GameManager : MonoBehaviour
     private Canvas attackScreen;
 
     [SerializeField]
+    private Canvas minigameScreen;
+
+    [SerializeField]
     private Canvas defeatScreen;
 
     [SerializeField]
@@ -54,6 +57,7 @@ public class GameManager : MonoBehaviour
         }
         if (totalTime >= 10f){
             attackScreen.gameObject.SetActive(true);
+            minigameScreen.gameObject.SetActive(false);
             totalTime = 0f;
         }
 
