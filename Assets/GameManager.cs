@@ -28,6 +28,11 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameObject[] assistCooldownVisual = new GameObject[3];
 
+    public Sprite skeleton;
+    public Sprite stereo;
+    [SerializeField]
+    private GameObject bossIcon;
+
     void Start()
     {
         assists[0] = new Assist(12f, 0f, false, AssistTypes.SHIELD);       
@@ -69,6 +74,17 @@ public class GameManager : MonoBehaviour
         bossManager.health = 100;
         bossManager.healthbar.transform.position = new Vector3(0, 4.4f, -1f);
         bossManager.healthbar.transform.localScale = new Vector3(10f, 0.4f, 1f);
+        bossManager.totalTime = -2f;
+        bossManager.destroyAttacks();
+        
+        if (bossManager.currentBoss == "skeleton"){
+            bossManager.currentBoss = "stereo";
+            bossIcon.GetComponent<SpriteRenderer>().sprite = stereo;
+        }
+        else{
+            bossManager.currentBoss = "skeleton";
+            bossIcon.GetComponent<SpriteRenderer>().sprite = skeleton;
+        }
     }
 
     public void TransitionScene(UnityEngine.SceneManagement.Scene scene) {
