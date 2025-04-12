@@ -1,8 +1,6 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -17,6 +15,9 @@ public class GameManager : MonoBehaviour
     private Canvas attackScreen;
 
     [SerializeField]
+    private Canvas defeatScreen;
+
+    [SerializeField]
     private PlayerController playerController;
 
     [SerializeField]
@@ -24,10 +25,12 @@ public class GameManager : MonoBehaviour
 
     private Assist[] assists = new Assist[3];
     private KeyCode[] assistKeyCodes = {KeyCode.J, KeyCode.K, KeyCode.L};
+    [SerializeField]
+    private GameObject[] assistCooldownVisual = new GameObject[3];
 
     void Start()
     {
-        assists[0] = new Assist(1f, 1f, false, AssistTypes.SHIELD);       
+        assists[0] = new Assist(12f, 0f, false, AssistTypes.SHIELD);       
     }
 
     [SerializeField]
@@ -47,9 +50,14 @@ public class GameManager : MonoBehaviour
         }
 
         for (int i = 0; i < assistKeyCodes.Length; i++)  {
-            if(Input.GetKeyDown(assistKeyCodes[i]) && !assists[i].active) {
+            if(Input.GetKeyDown(assistKeyCodes[i]) && !assists[i].active && assists[i].cooldownComplete) {
                 playerController.activeAssists[i] = assists[i];
+                assists[i].cooldownComplete = false;
                 useAssist(assists[i]);
+                StartCoroutine(AssistCooldown(assists[i]));
+                if(assists[i].duration > 0) {
+                    StartCoroutine(AssistDuration(assists[i]));
+                }
             }
         }
     }
@@ -81,7 +89,12 @@ public class GameManager : MonoBehaviour
     }
 
     public void AddAssist(Assist assist) {
-        assists.Append(assist);
+        if(assists[2] == null) {
+            assists.Append(assist);
+        }
+        else {
+            assists[0] = assist;
+        }
     }
 
     public void useAssist(Assist assist) {
@@ -97,4 +110,21 @@ public class GameManager : MonoBehaviour
         assist.active = false;
     }
 
+    IEnumerator AssistCooldown(Assist assist) {
+        float elapsed = 0f;
+        while(elapsed < assist.cooldown) {
+            if (!attackScreen.gameObject.activeSelf && !defeatScreen.gameObject.activeSelf) elapsed += Time.deltaTime;
+            yield return null;
+        }
+        assist.cooldownComplete = true;
+    }
+
+    IEnumerator AssistDuration(Assist assist) {
+        float elapsed = 0f;
+        while(elapsed < assist.duration) {
+            if (!attackScreen.gameObject.activeSelf && !defeatScreen.gameObject.activeSelf) elapsed += Time.deltaTime;
+            yield return null;
+        }
+        deactivateAssist(assist);
+    }
 }

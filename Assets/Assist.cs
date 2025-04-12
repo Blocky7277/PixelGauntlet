@@ -10,6 +10,8 @@ public class Assist {
     public AssistTypes assistType {get;}
 
     public GameObject obj {get; set;}
+
+    public bool cooldownComplete {get; set;} = true;
     
     public Assist(float cooldown, float duration, bool active, AssistTypes assistType) {
         this.cooldown = cooldown;
