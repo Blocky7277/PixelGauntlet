@@ -26,8 +26,16 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
+        
         Vector2 direction = new(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         rb.velocity = direction.normalized * spd;
+        for (int i = 0; i < activeAssists.Length; i++)
+        {
+            if(activeAssists[i] != null && activeAssists[i].assistType == AssistTypes.DASH) {
+                rb.velocity = direction.normalized * spd * 10;
+                activeAssists[i] = null;
+            }
+        }
     }
 
     public void DealDamage(int dmg) {

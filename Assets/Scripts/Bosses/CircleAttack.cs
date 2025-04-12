@@ -33,8 +33,6 @@ public class CircleAttack : MonoBehaviour
 
     void OnCollisionStay2D(Collision2D collision)
     {
-        Debug.Log("OPACITY " + opacitynum);
-        Debug.Log("PLAYER " + collision.gameObject.CompareTag("Player"));
         if(opacitynum >= 1 && collision.gameObject.CompareTag("Player")) {
            collision.gameObject.GetComponent<PlayerController>().DealDamage(dmg);
            Destroy(gameObject);

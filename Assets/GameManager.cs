@@ -5,7 +5,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public enum AssistTypes {
-    SHIELD
+    SHIELD,
+    DASH
 }
 
 public class GameManager : MonoBehaviour
@@ -35,7 +36,9 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        assists[0] = new Assist(12f, 0f, false, AssistTypes.SHIELD);       
+        // assists[0] = new Assist(12f, 0f, false, AssistTypes.SHIELD);
+        // assists[1] = new Assist(5f, .5f, false, AssistTypes.DASH);
+        UpdateVisuals();
     }
 
     [SerializeField]
@@ -55,11 +58,11 @@ public class GameManager : MonoBehaviour
         }
 
         for (int i = 0; i < assistKeyCodes.Length; i++)  {
-            if(Input.GetKeyDown(assistKeyCodes[i]) && !assists[i].active && assists[i].cooldownComplete) {
+            if(Input.GetKeyDown(assistKeyCodes[i]) && assists[i] != null && !attackScreen.gameObject.activeSelf && !defeatScreen.gameObject.activeSelf && !assists[i].active && assists[i].cooldownComplete) {
                 playerController.activeAssists[i] = assists[i];
                 assists[i].cooldownComplete = false;
                 useAssist(assists[i]);
-                StartCoroutine(AssistCooldown(assists[i]));
+                StartCoroutine(AssistCooldown(assists[i], assistCooldownVisual[i]));
                 if(assists[i].duration > 0) {
                     StartCoroutine(AssistDuration(assists[i]));
                 }
@@ -87,15 +90,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void TransitionScene(UnityEngine.SceneManagement.Scene scene) {
+    public void TransitionScene(Scene scene) {
         SceneManager.LoadScene(scene.name);
     }
 
-    public void TransitionScene(UnityEngine.SceneManagement.Scene scene, float delay) {
+    public void TransitionScene(Scene scene, float delay) {
         StartCoroutine(DelayedTransition(scene, delay));
     }
 
-    IEnumerator DelayedTransition(UnityEngine.SceneManagement.Scene scene, float delay) {
+    IEnumerator DelayedTransition(Scene scene, float delay) {
         yield return new WaitForSeconds(delay);
         SceneManager.LoadScene(scene.name);
     }
@@ -106,11 +109,17 @@ public class GameManager : MonoBehaviour
 
     public void AddAssist(Assist assist) {
         if(assists[2] == null) {
-            assists.Append(assist);
+            for (int i = 0; i < assists.Length; i++) {
+                if(assists[i] == null) {
+                    assists[i] = assist;
+                    break;
+                }
+            }
         }
         else {
             assists[0] = assist;
         }
+        UpdateVisuals();
     }
 
     public void useAssist(Assist assist) {
@@ -126,12 +135,23 @@ public class GameManager : MonoBehaviour
         assist.active = false;
     }
 
-    IEnumerator AssistCooldown(Assist assist) {
+    public void UpdateVisuals() {
+        for (int i = 0; i < assistKeyCodes.Length; i++)  {
+            if(assists[i] != null) {
+                assistCooldownVisual[i].GetComponent<SpriteRenderer>().color = Color.green;
+            }
+        }
+    }
+
+    IEnumerator AssistCooldown(Assist assist, GameObject visual) {
         float elapsed = 0f;
         while(elapsed < assist.cooldown) {
             if (!attackScreen.gameObject.activeSelf && !defeatScreen.gameObject.activeSelf) elapsed += Time.deltaTime;
+            elapsed = Math.Min(assist.cooldown, elapsed);
+            visual.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, elapsed/assist.cooldown);
             yield return null;
         }
+        visual.GetComponent<SpriteRenderer>().color = Color.green;
         assist.cooldownComplete = true;
     }
 
