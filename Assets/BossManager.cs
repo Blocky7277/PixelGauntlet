@@ -26,7 +26,7 @@ public class BossManager : MonoBehaviour
 
     void Update(){
         totalTime += Time.deltaTime;
-        if (attackScreen.gameObject.activeSelf && totalTime >= 2f){
+        if (!attackScreen.gameObject.activeSelf && totalTime >= 2f){
             spawnCircleAttack();
             totalTime = 0f;
         }
