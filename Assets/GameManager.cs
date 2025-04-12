@@ -1,8 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+
+public enum AssistTypes {
+    SHIELD
+}
 
 public class GameManager : MonoBehaviour
 {
@@ -13,11 +18,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private PlayerController playerController;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private AssistTypes[] assists = new AssistTypes[3];
+    private KeyCode[] assistKeyCodes = {KeyCode.J, KeyCode.K, KeyCode.L};
+    private Assist[] assistObjects = new Assist[3];
 
     // Update is called once per frame
     void Update()
@@ -44,4 +47,9 @@ public class GameManager : MonoBehaviour
     public PlayerController GetPlayerController() {
         return playerController;
     }
+
+    public void AddAssist(Assist assist) {
+        
+    }
+
 }

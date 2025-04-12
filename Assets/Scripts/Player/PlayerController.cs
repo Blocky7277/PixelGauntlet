@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
 
     public int spd {get; set;} = 10;
 
+    public bool shield {get; set;} = false;
+
     [SerializeField]
     private int health = 100;
 
