@@ -44,7 +44,8 @@ public class GameManager : MonoBehaviour
         player.SetActive(true);
         player.transform.position = new Vector3(0, -1.5f, 0);
         bossManager.health = 100;
-        UnityEditor.PrefabUtility.ResetToPrefabState(bossManager.healthbar);
+        bossManager.healthbar.transform.position = new Vector3(0, 4.4f, -1f);
+        bossManager.healthbar.transform.localScale = new Vector3(10f, 0.4f, 1f);
     }
 
     public void TransitionScene(UnityEngine.SceneManagement.Scene scene) {

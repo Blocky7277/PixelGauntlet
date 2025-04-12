@@ -24,7 +24,7 @@ public class BossManager : MonoBehaviour
     
     public void takeDamage(int damageToDeal){
         float percentHealthDealt = ((float)damageToDeal)/health;
-        health -= damageToDeal+100;
+        health -= damageToDeal;
         Debug.Log(health);
         healthbar.transform.position -= new Vector3(percentHealthDealt*healthbar.transform.localScale.x/2, 0, 0);
         healthbar.transform.localScale -= new Vector3(percentHealthDealt*healthbar.transform.localScale.x, 0, 0);
