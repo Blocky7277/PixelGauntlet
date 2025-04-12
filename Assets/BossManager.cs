@@ -4,26 +4,34 @@ using UnityEngine;
 
 public class BossManager : MonoBehaviour
 {
+    public int health {get; set;} = 100;
+
     [SerializeField]
-    private int health = 100;
+    private GameObject player;
 
     [SerializeField]
     private Canvas attackScreen;
     
     [SerializeField]
+    private Canvas defeatScreen;
+    
+    [SerializeField]
     private GameObject circleAttack;
 
-    [SerializeField]
-    private GameObject healthbar;
+    public GameObject healthbar;
 
     private float totalTime = 0f;
     
     public void takeDamage(int damageToDeal){
         float percentHealthDealt = ((float)damageToDeal)/health;
-        health -= damageToDeal;
+        health -= damageToDeal+100;
         Debug.Log(health);
         healthbar.transform.position -= new Vector3(percentHealthDealt*healthbar.transform.localScale.x/2, 0, 0);
         healthbar.transform.localScale -= new Vector3(percentHealthDealt*healthbar.transform.localScale.x, 0, 0);
+        if (health <= 0){
+            player.SetActive(false);
+            defeatScreen.gameObject.SetActive(true);
+        }
     }
 
     private void spawnCircleAttack(){

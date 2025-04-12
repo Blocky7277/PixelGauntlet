@@ -12,12 +12,9 @@ public class PlayerController : MonoBehaviour
 
     public int spd {get; set;} = 10;
 
-    public bool shield {get; set;} = false;
+    public int health {get; set;} = 3;
 
     public Assist[] activeAssists = new Assist[3];
-
-    [SerializeField]
-    private int health = 100;
 
     [SerializeField]
     GameManager gameManager;

@@ -30,6 +30,11 @@ public class GameManager : MonoBehaviour
         assists[0] = new Assist(1f, 1f, false, AssistTypes.SHIELD);       
     }
 
+    [SerializeField]
+    private GameObject player;
+    [SerializeField]
+    private BossManager bossManager;
+
     // Update is called once per frame
     void Update()
     {
@@ -47,6 +52,14 @@ public class GameManager : MonoBehaviour
                 useAssist(assists[i]);
             }
         }
+    }
+
+    public void resetBoss(){
+        attackScreen.gameObject.SetActive(false);
+        player.SetActive(true);
+        player.transform.position = new Vector3(0, -1.5f, 0);
+        bossManager.health = 100;
+        UnityEditor.PrefabUtility.ResetToPrefabState(bossManager.healthbar);
     }
 
     public void TransitionScene(UnityEngine.SceneManagement.Scene scene) {
