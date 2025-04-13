@@ -17,6 +17,8 @@ public class CircleAttack : MonoBehaviour
     [SerializeField]
     private int dmg = 1;
 
+    private bool didDamage = false;
+
     // Update is called once per frame
     void Update()
     {
@@ -33,9 +35,10 @@ public class CircleAttack : MonoBehaviour
 
     void OnCollisionStay2D(Collision2D collision)
     {
-        if(opacitynum >= 1 && collision.gameObject.CompareTag("Player")) {
-           collision.gameObject.GetComponent<PlayerController>().DealDamage(dmg);
-           Destroy(gameObject);
+        if(opacitynum >= 1 && collision.gameObject.CompareTag("Player") && !didDamage) {
+            didDamage = true;
+            collision.gameObject.GetComponent<PlayerController>().DealDamage(dmg);
+            Destroy(gameObject);
         }        
     }
 }

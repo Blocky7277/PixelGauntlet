@@ -39,12 +39,13 @@ public class PlayerController : MonoBehaviour
     }
 
     public void DealDamage(int dmg) {
+        Debug.Log(1);
         for (int i = 0; i < activeAssists.Length; i++)
         {
             if(activeAssists[i] != null && activeAssists[i].assistType == AssistTypes.SHIELD) {
-                activeAssists[i] = null;
                 gameManager.deactivateAssist(activeAssists[i]);
-                return;
+                activeAssists[i] = null;
+               return; 
             }
         }
         health -= dmg;
