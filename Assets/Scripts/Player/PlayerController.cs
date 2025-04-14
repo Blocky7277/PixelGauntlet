@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D rb;
 
-    public int str {get; set;} = 20;
+    public int str {get; set;} = 36;
 
     public int spd {get; set;} = 10;
 

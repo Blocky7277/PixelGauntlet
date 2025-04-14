@@ -19,7 +19,7 @@ public class TimeAttack : MonoBehaviour
     private bool barGoingLeft = false;
     
     public void attack(){
-        bossManager.takeDamage(gameManager.GetPlayerController().str*1000 - (int)(Mathf.Abs(bar.transform.position.x/0.5f)));
+        bossManager.takeDamage(gameManager.GetPlayerController().str - (int)(Mathf.Abs(bar.transform.position.x/0.5f)));
         attackScreen.gameObject.SetActive(false);
     }
 
