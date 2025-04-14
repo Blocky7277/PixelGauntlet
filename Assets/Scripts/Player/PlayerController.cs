@@ -1,6 +1,4 @@
 using System.Collections;
-using System.Runtime.CompilerServices;
-using Unity.VisualScripting.Dependencies.NCalc;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -39,7 +37,6 @@ public class PlayerController : MonoBehaviour
     }
 
     public void DealDamage(int dmg) {
-        Debug.Log(1);
         for (int i = 0; i < activeAssists.Length; i++)
         {
             if(activeAssists[i] != null && activeAssists[i].assistType == AssistTypes.SHIELD) {
@@ -52,11 +49,18 @@ public class PlayerController : MonoBehaviour
         if (health <= 0) {
             Die();
         }
+        gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+        StartCoroutine(DamageIndicator());
     }
 
     private void Die() {
         gameManager.TransitionScene(SceneManager.GetActiveScene(), 1f);
         gameObject.SetActive(false);
+    }
+
+    IEnumerator DamageIndicator() {
+        yield return new WaitForSeconds(.15f);
+        gameObject.GetComponent<SpriteRenderer>().color = Color.red;
     }
 
 }
